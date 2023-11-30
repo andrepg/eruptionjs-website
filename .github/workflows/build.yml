@@ -60,14 +60,17 @@ jobs:
       # Builds Astro/Starlight environment with GH Pages settings
       - name: Build Astro environment
         working-directory: ${{ env.BUILD_PATH }}
-        run: npm run build --site "${{ steps.build_page.outputs.origin }}" --base "${{ steps.build_page.outputs.base_path }}" --trailingSlash ignore
+        run: |
+          npm run build -- \
+          --site "${{ steps.build_page.outputs.origin }}" \
+          --base "${{ steps.build_page.outputs.base_path }}"
       # Uploads generated artifact to GitHub
       - name: Upload artifact to GH
         uses: actions/upload-pages-artifact@v2
         with:
           path: ${{ env.BUILD_PATH }}/dist
 
-  deploy_production: 
+  deploy_production:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main'
