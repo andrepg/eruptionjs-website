@@ -69,3 +69,29 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: ${{ env.BUILD_PATH }}/dist
+
+  deploy_production: 
+    runs-on: ubuntu-latest
+    needs: build
+    environment: 
+      name: github-pages
+      url: ${{ steps.prod_deployment.outputs.page_url }}
+    concurrency: 
+      group: "deploy"
+    steps:
+      - name: Upload to GH Production
+        uses: actions/deploy-pages@v2
+        id: prod_deployment
+
+  deploy_development: 
+    runs-on: ubuntu-latest
+    needs: build
+    environment: 
+      name: github-deployment
+      url: ${{ steps.dev_deployment.outputs.page_url }}
+    concurrency: 
+      group: "deploy"
+    steps:
+      - name: Upload to GH Production
+        uses: actions/deploy-pages@v2
+        id: dev_deployment
