@@ -9,11 +9,11 @@ hero:
   actions:
     - text: Start a new project
       link: /guides/new-project/
-      icon: right-arrow
+      icon: pen
       variant: primary
-    - text: GitHub
+    - text: See on GitHub
       link: https://github.com/eruptionjs
-      icon: external
+      icon: github
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -34,4 +34,28 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
   <Card title="Best of all: Open Source" icon="github">
 		Checkout and contribute to our source code on GitHub
 	</Card>
+</CardGrid>
+
+## Simple as one line
+
+<CardGrid stagger>
+  <Card title="🤖 Using NPM">
+    Boilerplate your app with EruptionJS directly from NPM it's easy as run
+    `npm init eruption@latest`
+  </Card>
+
+  <Card title="🐋 Live from Docker">
+    Or you can try live directly from Docker Compose using
+    `docker-compose -f docker-compose-dev.yml up`
+  </Card>
+  
+  <Card title="🌐 Try EruptionJS online">
+    Can't bother to install anything on your machine?
+    Use our [StackBlitz online demo](https://stackblitz.com/fork/github/eruptionjs/core) 
+    to try out EruptionJS.
+  </Card>
+  
+  [🚀 Find out more on GitHub](github.com/eruptionjs/core)
+
+  [📚 Read documentation](/guides/new-project)
 </CardGrid>
