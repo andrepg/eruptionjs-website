@@ -40,6 +40,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout codebase
         uses: actions/checkout@v3
+      # Setup our Pages environment to work on later
+      - name: Setup Pages environment
+        id: build_page
+        uses: actions/configure-pages@v3
       # Setup NodeJS and NPM to build our frontend
       - name: Setup NodeJS platform
         uses: actions/setup-node@v4
@@ -58,10 +62,6 @@ jobs:
           npm run build \
           --site "${{ steps.build_page.outputs.origin }}" \
           --base "${{ steps.build_page.outputs.base_path }}" 
-      # Setup our Pages environment to work on later
-      - name: Setup Pages environment
-        id: build_page
-        uses: action@configure-pages@v3
       # Uploads generated artifact to GitHub
       - name: Upload artifact to GH
         uses: actions/upload-pages-artifact@v2
