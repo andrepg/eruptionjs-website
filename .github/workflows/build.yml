@@ -50,7 +50,9 @@ jobs:
         with:
           node-version: "18"
           cache: "npm"
-          cache-dependency-path: ${{ env.BUILD_PATH }}/package-lock.json
+          # TODO When we have package-lock.json commited this comment can be removed
+          # to enable cache to our pipeline and increase speed
+          # cache-dependency-path: ${{ env.BUILD_PATH }}/package-lock.json
       # Run NPM CI to clean and install dependencies 
       - name: Install dependencies
         run: npm ci
