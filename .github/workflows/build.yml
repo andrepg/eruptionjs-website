@@ -55,7 +55,7 @@ jobs:
           # cache-dependency-path: ${{ env.BUILD_PATH }}/package-lock.json
       # Run NPM CI to clean and install dependencies 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: ${{ env.BUILD_PATH }}
       # Builds Astro/Starlight environment with GH Pages settings
       - name: Build Astro environment
